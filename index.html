@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 1st Birthday Musavir!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Caveat:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+
+  :root{
+    --cream: #fff6e9;
+    --brown: #8b5e3c;
+    --brown-dark: #5c3a21;
+    --pink: #ffb6c1;
+    --blue: #aed9e0;
+    --honey: #f4a300;
+    --paper: #fffaf2;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background: radial-gradient(ellipse at top, #fff0d9, var(--cream) 70%);
+    font-family: 'Poppins', sans-serif;
+    color: var(--brown-dark);
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  /* floating paw prints / dots background */
+  .floaters{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+  }
+  .floater{
+    position:absolute;
+    font-size: 1.6rem;
+    opacity:.25;
+    animation: drift 9s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateY(0) rotate(0deg); }
+    50%{ transform: translateY(-30px) rotate(12deg); }
+  }
+
+  .confetti{
+    position:fixed; top:-10px; z-index:5; pointer-events:none;
+    width:10px; height:14px; opacity:.9;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(540deg); }
+  }
+
+  header{
+    position:relative; z-index:2;
+    text-align:center;
+    padding: 7vh 5vw 3vh;
+  }
+
+  .eyebrow{
+    font-family:'Caveat', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--brown);
+    letter-spacing:1px;
+  }
+
+  .bear-icon{
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    display:inline-block;
+    animation: bounce 2.2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 14px rgba(139,94,60,.3));
+  }
+  @keyframes bounce{
+    0%,100%{ transform: translateY(0) rotate(-4deg); }
+    50%{ transform: translateY(-14px) rotate(4deg); }
+  }
+
+  h1{
+    font-family:'Fredoka', sans-serif;
+    font-size: clamp(2.4rem, 8vw, 5.2rem);
+    font-weight:700;
+    line-height:1.05;
+    background: linear-gradient(90deg, var(--honey), var(--pink), var(--blue));
+    -webkit-background-clip: text;
+    background-clip:text;
+    color:transparent;
+    background-size:200% auto;
+    animation: shine 5s linear infinite;
+    margin: .3em 0 .1em;
+  }
+  @keyframes shine{
+    to{ background-position: 200% center; }
+  }
+
+  .number-one{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: clamp(80px, 18vw, 120px);
+    height: clamp(80px, 18vw, 120px);
+    border-radius: 50%;
+    background: var(--honey);
+    color: white;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700;
+    font-size: clamp(2.4rem, 9vw, 4rem);
+    box-shadow: 0 10px 24px rgba(244,163,0,.4);
+    margin: .6rem 0;
+    animation: pop-in 1s cubic-bezier(.34,1.56,.64,1) .3s both;
+  }
+  @keyframes pop-in{
+    0%{ transform: scale(0) rotate(-20deg); opacity:0;}
+    100%{ transform: scale(1) rotate(-6deg); opacity:1;}
+  }
+
+  .name{
+    font-family:'Caveat', cursive;
+    font-size: clamp(2rem, 6.5vw, 3.6rem);
+    color: var(--brown);
+    display:block;
+    animation: wiggle 3.5s ease-in-out 1.4s infinite;
+  }
+  @keyframes wiggle{
+    0%,100%{ transform: rotate(-2deg);}
+    50%{ transform: rotate(2deg);}
+  }
+
+  .balloons{
+    position:relative;
+    height: 130px;
+    margin-top: 1rem;
+  }
+  .balloon{
+    position:absolute;
+    bottom:0;
+    width: 44px; height: 56px;
+    border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: inset -8px -8px 12px rgba(0,0,0,.1), inset 8px 6px 10px rgba(255,255,255,.3);
+  }
+  .balloon::after{
+    content:''; position:absolute; bottom:-22px; left:50%;
+    width:1px; height:22px; background: rgba(139,94,60,.4);
+    transform: translateX(-50%);
+  }
+  @keyframes float{
+    0%,100%{ transform: translateY(0) rotate(-2deg);}
+    50%{ transform: translateY(-16px) rotate(2deg);}
+  }
+
+  section{
+    position:relative; z-index:2;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem 6vw 4rem;
+  }
+
+  .card{
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(139,94,60,.15);
+    backdrop-filter: blur(4px);
+    border-radius: 24px;
+    padding: 2.2rem 2rem;
+    margin-bottom: 1.6rem;
+    opacity:0;
+    transform: translateY(30px);
+    animation: rise 0.9s ease forwards;
+    box-shadow: 0 12px 30px rgba(139,94,60,.1);
+  }
+  .card:nth-of-type(1){ animation-delay: .2s; }
+  .card:nth-of-type(2){ animation-delay: .5s; }
+
+  @keyframes rise{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .card h2{
+    font-family:'Fredoka', sans-serif;
+    color: var(--honey);
+    font-size: 1.3rem;
+    margin-bottom: .7rem;
+  }
+  .card p{
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: var(--brown-dark);
+  }
+
+  .milestones{
+    display:flex; gap: .7rem; flex-wrap:wrap; margin-top: 1.1rem;
+  }
+  .chip{
+    background: rgba(244,163,0,.12);
+    border: 1px solid rgba(244,163,0,.35);
+    color: var(--brown);
+    padding: .45rem .9rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    transition: transform .25s ease, background .25s ease;
+  }
+  .chip:hover{
+    transform: translateY(-3px) scale(1.05);
+    background: rgba(244,163,0,.22);
+  }
+
+  .cake-wrap{
+    text-align:center;
+    margin: 2.5rem 0 1rem;
+  }
+  .cake{
+    display:inline-block;
+    font-size: clamp(3.2rem, 13vw, 5.5rem);
+    cursor:pointer;
+    user-select:none;
+    transition: transform .2s ease;
+    filter: drop-shadow(0 10px 16px rgba(139,94,60,.25));
+  }
+  .cake:hover{ transform: scale(1.06) rotate(-2deg); }
+  .cake:active{ transform: scale(.95); }
+
+  .hint{
+    font-family:'Caveat', cursive;
+    font-size: 1.25rem;
+    color: var(--brown);
+    margin-top: .5rem;
+    opacity:.85;
+  }
+
+  .overlay{
+    position:fixed; inset:0; z-index:50;
+    background: rgba(92,58,33,.55);
+    backdrop-filter: blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none;
+    transition: opacity .4s ease;
+    padding: 6vw;
+  }
+  .overlay.open{ opacity:1; pointer-events:auto; }
+
+  .popup{
+    position:relative;
+    max-width: 420px;
+    width:100%;
+    background: linear-gradient(160deg, #fffaf2, #fff0d9);
+    border: 2px solid rgba(244,163,0,.4);
+    border-radius: 26px;
+    padding: 2.4rem 2rem 2rem;
+    text-align:center;
+    box-shadow: 0 30px 60px rgba(92,58,33,.3);
+    transform: scale(.7) translateY(40px);
+    opacity:0;
+    transition: transform .5s cubic-bezier(.34,1.56,.64,1), opacity .4s ease;
+  }
+  .overlay.open .popup{
+    transform: scale(1) translateY(0);
+    opacity:1;
+  }
+
+  .popup-icon{
+    font-size: 3rem;
+    animation: tada 1.4s ease 1;
+  }
+  @keyframes tada{
+    0%{ transform: scale(1); }
+    10%,20%{ transform: scale(.9) rotate(-8deg); }
+    30%,50%,70%,90%{ transform: scale(1.1) rotate(8deg); }
+    40%,60%,80%{ transform: scale(1.1) rotate(-8deg); }
+    100%{ transform: scale(1) rotate(0); }
+  }
+
+  .popup h3{
+    font-family:'Fredoka', sans-serif;
+    color: var(--brown);
+    font-size: 1.25rem;
+    margin: 1rem 0 .8rem;
+  }
+  .popup p{
+    font-family:'Caveat', cursive;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    color: var(--brown-dark);
+  }
+  .popup-signature{
+    margin-top: 1rem;
+    font-family:'Caveat', cursive;
+    font-size: 1.15rem;
+    color: var(--honey);
+  }
+  .popup-close{
+    position:absolute; top:14px; right:16px;
+    background:none; border:none;
+    color: rgba(92,58,33,.5);
+    font-size: 1.6rem;
+    line-height:1;
+    cursor:pointer;
+    transition: color .2s ease, transform .2s ease;
+  }
+  .popup-close:hover{ color: var(--pink); transform: rotate(90deg); }
+
+  footer{
+    position:relative; z-index:2;
+    text-align:center;
+    padding: 2.5rem 5vw 5vh;
+    font-family:'Caveat', cursive;
+    font-size: 1.35rem;
+    color: rgba(92,58,33,.7);
+  }
+
+  .heart{
+    display:inline-block;
+    color: var(--pink);
+    animation: beat 1.2s ease-in-out infinite;
+  }
+  @keyframes beat{
+    0%,100%{ transform: scale(1); }
+    25%{ transform: scale(1.25); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="floaters" id="floaters"></div>
+<div id="confettiWrap"></div>
+
+<header>
+  <div class="eyebrow">A whole year of giggles and chaos —</div>
+  <div class="bear-icon">🧸</div>
+  <h1>Happy Birthday</h1>
+  <div class="number-one">1</div>
+  <span class="name">Musavir Hussain! 🎈</span>
+
+  <div class="balloons">
+    <div class="balloon" style="left:30%; background:var(--pink); animation-delay:0s;"></div>
+    <div class="balloon" style="left:42%; background:var(--honey); animation-delay:.6s;"></div>
+    <div class="balloon" style="left:54%; background:var(--blue); animation-delay:1.1s;"></div>
+    <div class="balloon" style="left:66%; background:var(--pink); animation-delay:.3s;"></div>
+  </div>
+</header>
+
+<section>
+
+  <div class="card">
+    <h2>🐻 One Whole Year</h2>
+    <p>
+      Three hundred and sixty-five days ago, the family got a little louder, the photo gallery got a lot fuller, and everyone's heart got a permanent new resident. Happy 1st Birthday, Musavir — the tiniest member of the family with the biggest fan club.
+    </p>
+    <div class="milestones">
+      <span class="chip">First smile 😊</span>
+      <span class="chip">First steps 👣</span>
+      <span class="chip">First words 🗣️</span>
+      <span class="chip">First birthday 🎂</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💛 From Your Mamu</h2>
+    <p>
+      May this year be full of soft toys, sticky little fingers, naps that actually happen, and a thousand more reasons to smile. Grow up slow, little one — everyone's enjoying this part way too much to rush it.
+    </p>
+  </div>
+
+  <div class="cake-wrap">
+    <div class="cake" id="cake">🎂</div>
+    <div class="hint">tap the cake for a surprise</div>
+  </div>
+
+</section>
+
+<div class="overlay" id="overlay">
+  <div class="popup" id="popup">
+    <button class="popup-close" id="popupClose">&times;</button>
+    <div class="popup-icon">🧸</div>
+    <h3>A little note for Musavir</h3>
+    <p>
+      "Happy 1st Birthday, my little champ! May your life be full of love, laughter, and endless cuddles. Your Mamu loves you to the moon and back!" 🤍
+    </p>
+    <div class="popup-signature">— with all my love, your Mamu</div>
+  </div>
+</div>
+
+<footer>
+  Made with love for the family's littlest star <span class="heart">❤</span>
+</footer>
+
+<script>
+  // floating background icons
+  const floatersWrap = document.getElementById('floaters');
+  const icons = ['🧸','🎈','⭐','🍼','🐻'];
+  for(let i=0;i<18;i++){
+    const f = document.createElement('div');
+    f.className='floater';
+    f.textContent = icons[Math.floor(Math.random()*icons.length)];
+    f.style.left = Math.random()*100+'vw';
+    f.style.top = Math.random()*100+'vh';
+    f.style.animationDelay = (Math.random()*5)+'s';
+    f.style.fontSize = (1.2 + Math.random()*1.4)+'rem';
+    floatersWrap.appendChild(f);
+  }
+
+  // confetti
+  const colors = ['#f4a300','#ffb6c1','#aed9e0','#8b5e3c','#fffaf2'];
+  const confettiWrap = document.getElementById('confettiWrap');
+  function spawnConfetti(n){
+    for(let i=0;i<n;i++){
+      const c = document.createElement('div');
+      c.className='confetti';
+      c.style.left = Math.random()*100+'vw';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration = (3+Math.random()*3)+'s';
+      c.style.animationDelay = (Math.random()*4)+'s';
+      c.style.borderRadius = Math.random()>0.5 ? '50%' : '2px';
+      confettiWrap.appendChild(c);
+      setTimeout(()=>c.remove(), 9000);
+    }
+  }
+  spawnConfetti(40);
+  setInterval(()=>spawnConfetti(15), 4500);
+
+  // surprise popup
+  const cake = document.getElementById('cake');
+  const overlay = document.getElementById('overlay');
+  const popupClose = document.getElementById('popupClose');
+
+  cake.addEventListener('click', ()=>{
+    overlay.classList.add('open');
+    spawnConfetti(70);
+  });
+  popupClose.addEventListener('click', ()=> overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e)=>{
+    if(e.target === overlay) overlay.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
